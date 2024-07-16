@@ -1,0 +1,9 @@
+# Ignore node_module directionary needed for Eslint
+node_modules/
+
+# Ignore eslint.config file for Eslint
+eslint.config.mjs
+
+# Ignore package.json files needed for Eslint
+package-lock.json
+package.json
