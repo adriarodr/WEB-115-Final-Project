@@ -1,0 +1,11 @@
+#mealPlan fieldset:not(fieldset.active) {
+    display: none;
+}
+
+#submitButton {
+    display: none;
+}
+
+.completed {
+    color: green;
+}
