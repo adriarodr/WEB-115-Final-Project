@@ -28,7 +28,7 @@
 
         <div class="wrapper">
             <!-- Aside area for all the steps in the form -->
-            <aside id="steps" class="desktop-mobile">
+            <aside id="steps" class="desktop">
                 <ul><span>1</span> Personal Info</ul>
                 <ul><span>2</span> Meal Plan: Monday</ul>
                 <ul><span>3</span> Meal Plan: Tuesday</ul>
@@ -39,11 +39,13 @@
                 <ul><span>8</span> Meal Plan: Sunday</ul>
             </aside>
 
+            <!-- TODO: Add aside area for the mobile -->
+
             <!-- Form for the Meal Plan -->
             <form id="mealPlan">
 
                 <!-- Personal information fieldset -->
-                <fieldset id="personal-info">
+                <fieldset id="personal-info" class="active">
                     <legend><h2>Personal Information</h2></legend>
 
                     <label for="name">Full Name</label><br>
@@ -201,7 +203,7 @@
                     <button id="previousSlide">Previous</button>
                     <button type="reset" id="resetButton">Reset</button>
                     <button id="nextSlide">Next</button>
-                    <!-- <button type="submit">Submit</button> -->
+                    <button type="submit" id="submitButton">Submit</button>
                 </div>
             </form>
         </div>
