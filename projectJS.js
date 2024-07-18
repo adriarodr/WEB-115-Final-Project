@@ -10,6 +10,9 @@ $(document).ready(function () {
     // Add a click handler to Next button
     $("#nextSlide").click(nextSlide);
 
+    // Add a click handler to Reset button
+    $("#resetButton").click(resetMealPlan);
+
     // Add a click handler to Previous button
     $("#previousSlide").click(PreviousSlide);
 
@@ -24,7 +27,22 @@ $(document).ready(function () {
         }
     }
 
-    // Reset Form
+    // Reset the meal plan form
+    function resetMealPlan() {
+        // Remove active class to the current fieldset
+        $($("#mealPlan fieldset")[currentStep]).removeClass("active");
+
+        // Add active class to the first fieldset and show it
+        $("#mealPlan fieldset").first().addClass("active").hide().show(400);
+
+        // Reset the currentStep
+        currentStep = 0;
+
+        // Iterates through all the list items with completed class and removes that class
+        $(".steps li.completed").each(function() {
+            $(this).removeClass("completed");
+        });
+    }
 
     // Print Planner
 
