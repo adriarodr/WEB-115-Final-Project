@@ -40,7 +40,7 @@ $(document).ready(function () {
             // Removes the active class from the currentStep and adds it to the next sibling
             $($("#mealPlan fieldset")[currentStep]).removeClass("active").next("fieldset").addClass("active").hide().show(400);
 
-            $($("#steps ul")[currentStep]).children("span").addClass("completed");
+            $($("#steps ul>li")[currentStep]).children("span").addClass("completed");
 
             currentStep++;
 
@@ -62,7 +62,7 @@ $(document).ready(function () {
 
             currentStep--;
 
-            $($("#steps ul")[currentStep]).children("span").removeClass("completed");
+            $($("#steps ul>li")[currentStep]).children("span").removeClass("completed");
 
             // If the current step falls below 7, show the next button and hide the submit button
             if (currentStep < 7) {

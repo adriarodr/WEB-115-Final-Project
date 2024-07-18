@@ -1,3 +1,46 @@
+/* CSS Variables */
+:root {
+    --c-neutral-100: #ffffff;
+    --c-neutral-200: #f8f8f8;
+    --c-neutral-800: #353435;
+
+    --c-primary-200: #faf9ff;
+
+    --c-accent-400: #8ff3b9;
+    --c-accent-500: #ec9080;
+}
+
+/* CSS Reset */
+body,
+header,
+main,
+footer,
+div,
+aside,
+h2,
+img,
+ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Style rule for box sizing */
+* {
+    box-sizing: border-box;
+}
+
+/* Style rule for body and images */
+body {
+    background-color: var(--c-primary-200);
+    font-size: 1.125rem;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
 #mealPlan fieldset:not(fieldset.active) {
     display: none;
 }
