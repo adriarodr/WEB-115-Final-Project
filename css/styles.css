@@ -1,13 +1,20 @@
 /* CSS Variables */
 :root {
     --c-neutral-100: #ffffff;
-    --c-neutral-200: #f8f8f8;
-    --c-neutral-800: #353435;
+    --c-neutral-200: #f5f5f5;
+    --c-neutral-700: #353435;
+    --c-neutral-800: #292B31;
 
-    --c-primary-200: #faf9ff;
+    --c-primary-600: #3a3d4c;
+    --c-primary-700: #1D2233;
 
-    --c-accent-400: #8ff3b9;
-    --c-accent-500: #ec9080;
+    --c-accent-400: #FCD4D1;
+    --c-accent-500: #F08080;
+    --c-accent-600: #5cd092;
+
+    --fw-regular: 400;
+    --fw-semi-bold: 600;
+    --fw-bold: 900;
 }
 
 /* CSS Reset */
@@ -30,10 +37,20 @@ ul {
     box-sizing: border-box;
 }
 
+/* Style rules for mobile layout */
+
+/* Hides desktop class */
+.desktop {
+    display: none;
+}
+
 /* Style rule for body and images */
 body {
-    background-color: var(--c-primary-200);
-    font-size: 1.125rem;
+    background-color: var(--c-primary-700);
+    padding: 5%;
+    font-family: "Roboto", sans-serif;
+    font-weight: var(--fw-regular);
+    font-size: 1rem;
 }
 
 img {
@@ -41,14 +58,116 @@ img {
     display: block;
 }
 
+/* Style rules for header area */
+header img {
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+/* Style rules for main area*/
+.wrapper {
+    display: grid;
+    justify-items: center;
+    margin: 2.5rem auto;
+    background-color: var(--c-neutral-100);
+    border-radius: 10px;
+    outline: 1px solid var(--c-neutral-800);
+}
+
+.steps {
+    width: 100%;
+    padding-block: 1rem;
+    text-align: center;
+    background-color: var(--c-primary-700);
+    border-radius: 10px;
+    outline: 1px solid var(--c-neutral-800);
+}
+
+.mobile.steps ul {
+    list-style-type: none;
+}
+
+.mobile.steps ul > li {
+    display: inline-block;
+    margin-inline: 0.25rem;
+    padding: 0.3rem 0.65rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid var(--c-neutral-100);
+    color: var(--c-neutral-100);
+    font-weight: var(--fw-semi-bold);
+}
+
+.mobile li.completed {
+    background-color: var(--c-accent-600);
+    color: var(--c-neutral-800) !important;
+    border: 1px solid var(--c-accent-600) !important;
+}
+
+#mealPlan {
+    padding: 1.75rem;
+    width: 100%;
+}
+
+#mealPlan fieldset {
+    border: none;
+    margin: 0 auto;
+    width: 100%;
+}
+
 #mealPlan fieldset:not(fieldset.active) {
     display: none;
 }
 
-#submitButton {
-    display: none;
+#mealPlan fieldset legend {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--c-primary-700);
+    font-weight: var(--fw-bold);
+    font-size: 1.25rem;
 }
 
-.completed {
-    color: green;
+#mealPlan fieldset label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--c-primary-700);
+
+}
+
+#mealPlan fieldset input,
+#mealPlan fieldset textarea {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 95%;
+    background-color: var(--c-neutral-200);
+    border: 1px solid var(--c-primary-700);
+    border-radius: 5px;
+}
+
+#button-wrapper {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+#button-wrapper button {
+    padding: 0.5rem 1rem;
+    border-radius: 1.25rem;
+    border: 1px solid var(--c-primary-700);
+    background-color: var(--c-primary-600);
+    color: var(--c-neutral-100);
+    font-weight: var(--fw-semi-bold);
+    font-size: 1rem;
+}
+
+button#resetButton {
+    border: 1px solid var(--c-accent-500);
+    background-color: var(--c-accent-400);
+    color: var(--c-primary-700);
+}
+
+#submitButton {
+    display: none;
 }
