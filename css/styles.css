@@ -77,13 +77,15 @@ header img {
 .steps {
     width: 100%;
     padding-block: 1rem;
-    text-align: center;
     background-color: var(--c-primary-700);
     border-radius: 10px;
     outline: 1px solid var(--c-neutral-800);
+    color: var(--c-neutral-100);
+    font-weight: var(--fw-semi-bold);
+    font-size: 0.938rem;
 }
 
-.mobile.steps ul {
+.steps ul {
     list-style-type: none;
 }
 
@@ -94,8 +96,6 @@ header img {
     text-align: center;
     border-radius: 50%;
     border: 1px solid var(--c-neutral-100);
-    color: var(--c-neutral-100);
-    font-weight: var(--fw-semi-bold);
 }
 
 .mobile li.completed {
@@ -123,27 +123,31 @@ header img {
     margin: 0 auto;
     text-align: center;
     margin-bottom: 1rem;
-    color: var(--c-primary-700);
+    width: 100%;
+}
+
+#mealPlan fieldset legend h2 {
+    font-size: 1.625rem;
     font-weight: var(--fw-bold);
-    font-size: 1.25rem;
+    color: var(--c-primary-700);
 }
 
 #mealPlan fieldset label {
     display: block;
     margin-bottom: 0.35rem;
     color: var(--c-primary-700);
-
+    font-size: 0.938rem;
 }
 
-#mealPlan fieldset input,
-#mealPlan fieldset textarea {
+#mealPlan fieldset input {
     display: block;
     margin-bottom: 1rem;
-    padding: 0.5rem;
-    width: 95%;
+    padding: 0.35rem;
+    width: 100%;
     background-color: var(--c-neutral-200);
     border: 1px solid var(--c-primary-700);
     border-radius: 5px;
+    font-size: 1.063rem;
 }
 
 #button-wrapper {
@@ -159,7 +163,6 @@ header img {
     background-color: var(--c-primary-600);
     color: var(--c-neutral-100);
     font-weight: var(--fw-semi-bold);
-    font-size: 1rem;
 }
 
 button#resetButton {
@@ -170,4 +173,91 @@ button#resetButton {
 
 #submitButton {
     display: none;
+}
+
+/* Style rules for Desktop Viewport */
+@media (min-width: 1280px) {
+    /* Hides mobile view and display desktop view */
+    .mobile {
+        display: none;
+    }
+
+    .desktop {
+        display: block;
+    }
+
+    /* Style rules for the body */
+    body {
+        font-size: 1.063rem;
+        padding: 2rem;
+    }
+
+    /* Style rules for header area */
+    header img {
+        max-width: 25%;
+    }
+
+    /* Style rules for main area */
+    .wrapper {
+        grid-template-columns: 1fr 2fr;
+        padding: 1rem;
+        width: 65.625rem;
+    }
+
+    .desktop.steps {
+        padding: 2.75rem 1.75rem;
+    }
+
+    .desktop.steps ul > li {
+        font-size: 1.063rem;
+    }
+
+    .desktop.steps ul > li:not(.desktop.steps ul > li:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .desktop.steps ul > li span {
+        display: inline-block;
+        border: 1px solid var(--c-neutral-100);
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        margin-right: 1rem;
+    }
+
+    .desktop.steps ul > li.completed {
+        color: var(--c-accent-600);
+    }
+
+    .desktop.steps ul > li.completed span {
+        background-color: var(--c-accent-600);
+        border-color: var(--c-accent-600);
+        color: var(--c-primary-700);
+    }
+
+    #mealPlan fieldset legend {
+        text-align: left;
+    }
+
+    #mealPlan fieldset legend h2 {
+        font-size: 2.375rem;
+    }
+
+    #mealPlan fieldset input {
+        margin-bottom: 2.75rem;
+    }
+
+    #mealPlan button {
+        font-size: 1.063rem;
+        padding: 0.75rem 1.25rem;
+        transition: background-color 400ms;
+    }
+
+    #mealPlan button:hover {
+        background-color: var(--c-primary-700);
+    }
+
+    #mealPlan #resetButton:hover {
+        background-color: var(--c-accent-500);
+    }
+
 }
