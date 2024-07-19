@@ -156,7 +156,7 @@ header img {
     justify-content: space-around;
 }
 
-#button-wrapper button {
+button {
     padding: 0.5rem 1rem;
     border-radius: 1.25rem;
     border: 1px solid var(--c-primary-700);
@@ -165,7 +165,7 @@ header img {
     font-weight: var(--fw-semi-bold);
 }
 
-button#resetButton {
+#resetButton {
     border: 1px solid var(--c-accent-500);
     background-color: var(--c-accent-400);
     color: var(--c-primary-700);
@@ -246,17 +246,17 @@ button#resetButton {
         margin-bottom: 2.75rem;
     }
 
-    #mealPlan button {
+    button {
         font-size: 1.063rem;
         padding: 0.75rem 1.25rem;
         transition: background-color 400ms;
     }
 
-    #mealPlan button:hover {
+    button:hover {
         background-color: var(--c-primary-700);
     }
 
-    #mealPlan #resetButton:hover {
+    #resetButton:hover {
         background-color: var(--c-accent-500);
     }
 
