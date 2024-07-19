@@ -212,8 +212,8 @@ $(document).ready(function () {
 
             currentStep--;
 
-            $(currentSlide).removeClass("completed");
-            $(currentSlide).removeClass("completed");
+            $($(".desktop.steps ul > li")[currentStep]).removeClass("completed");
+            $($(".mobile.steps ul > li")[currentStep]).removeClass("completed");
 
             $("#mealPlan fieldset.active input")[0].focus();
 
