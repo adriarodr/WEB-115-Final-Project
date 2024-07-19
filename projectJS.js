@@ -4,15 +4,16 @@ $(document).ready(function () {
     // Stores the current slide
     let currentStep = 0;
 
-    // Add a click handler to Next button
+    // Add a click handler to next button
     $("#nextSlide").click(nextSlide);
 
     // Add a click handler to Reset button
     $("#resetButton").click(resetMealPlan);
 
-    // Add a click handler to Previous button
+    // Add a click handler to previous button
     $("#previousSlide").click(PreviousSlide);
 
+    // Add a click handler to submit button
     $("#submitButton").click(generatePlanner);
 
     // Validate Email
@@ -47,13 +48,16 @@ $(document).ready(function () {
             $(".steps li.completed").each(function() {
                 $(this).removeClass("completed");
             });
+
+            // Update the steps for mobile steps progress
+            $("#currentSteps").text(currentStep + 1);
         } else {
             // If user cancels, then prevent the form from resetting
             e.preventDefault();
         }
     }
 
-    // Weekly Planner generation
+    // Generates the meal planner for the week
     function generatePlanner() {
         // Obtain all the values for meal plan and save it into an object
         const weekMealPlan = {
@@ -185,6 +189,7 @@ $(document).ready(function () {
         `);
     }
 
+    // TODO: Allow user to download Planner
     // Download Planner
 
     // Next Slide
@@ -193,10 +198,13 @@ $(document).ready(function () {
             // Removes the active class from the currentStep and adds it to the next sibling
             $($("#mealPlan fieldset")[currentStep]).removeClass("active").next("fieldset").addClass("active").hide().show(400);
 
+            // Add completed class to the current step list item for desktop steps progress
             $($(".desktop.steps ul > li")[currentStep]).addClass("completed");
-            $($(".mobile.steps ul > li")[currentStep]).addClass("completed");
 
             currentStep++;
+
+            // Update the steps for mobile steps progress
+            $("#currentSteps").text(currentStep + 1);
 
             $("#mealPlan fieldset.active input")[0].focus();
 
@@ -218,8 +226,11 @@ $(document).ready(function () {
 
             currentStep--;
 
+            // Remove completed class to the current step list item for desktop steps progress
             $($(".desktop.steps ul > li")[currentStep]).removeClass("completed");
-            $($(".mobile.steps ul > li")[currentStep]).removeClass("completed");
+
+            // Update the steps for mobile steps progress
+            $("#currentSteps").text(currentStep + 1);
 
             $("#mealPlan fieldset.active input")[0].focus();
 

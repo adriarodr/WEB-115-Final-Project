@@ -26,7 +26,8 @@ div,
 aside,
 h2,
 img,
-ul {
+ul,
+fieldset {
     margin: 0;
     padding: 0;
     border: 0;
@@ -46,11 +47,11 @@ ul {
 
 /* Style rule for body and images */
 body {
+    padding: 7%;
     background-color: var(--c-primary-700);
-    padding: 5%;
     font-family: "Roboto", sans-serif;
     font-weight: var(--fw-regular);
-    font-size: 1rem;
+    font-size: 0.9375rem;
 }
 
 img {
@@ -67,52 +68,30 @@ header img {
 /* Style rules for main area*/
 .wrapper {
     display: grid;
-    justify-items: center;
-    margin: 2.5rem auto;
+    grid-template-columns: 1fr;
+    margin-top: 1.125rem;
+    margin-inline: auto;
+    padding: 1rem;
+    max-width: 26.25rem;
     background-color: var(--c-neutral-100);
     border-radius: 10px;
     outline: 1px solid var(--c-neutral-800);
+    box-shadow: 7px 7px 20px 0px rgba(0,0,0,0.41);
 }
 
 .steps {
     width: 100%;
-    padding-block: 1rem;
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+    font-weight: var(--fw-semi-bold);
+    font-size: 1.25rem;
+    color: var(--c-neutral-200);
     background-color: var(--c-primary-700);
     border-radius: 10px;
-    outline: 1px solid var(--c-neutral-800);
-    color: var(--c-neutral-100);
-    font-weight: var(--fw-semi-bold);
-    font-size: 0.938rem;
 }
 
-.steps ul {
-    list-style-type: none;
-}
-
-.mobile.steps ul > li {
-    display: inline-block;
-    margin-inline: 0.25rem;
-    padding: 0.3rem 0.65rem;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid var(--c-neutral-100);
-}
-
-.mobile li.completed {
-    background-color: var(--c-accent-600);
-    color: var(--c-neutral-800) !important;
-    border: 1px solid var(--c-accent-600) !important;
-}
-
-#mealPlan {
-    padding: 1.75rem;
-    width: 100%;
-}
-
-#mealPlan fieldset {
-    border: none;
-    margin: 0 auto;
-    width: 100%;
+.mobile.steps {
+    margin-bottom: 1.5rem;
 }
 
 #mealPlan fieldset:not(fieldset.active) {
@@ -120,55 +99,54 @@ header img {
 }
 
 #mealPlan fieldset legend {
-    margin: 0 auto;
-    text-align: center;
-    margin-bottom: 1rem;
     width: 100%;
-}
-
-#mealPlan fieldset legend h2 {
-    font-size: 1.625rem;
-    font-weight: var(--fw-bold);
+    margin-inline: auto;
+    margin-bottom: 0.938rem;
     color: var(--c-primary-700);
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+    font-size: 1.25rem;
+    font-weight: var(--fw-bold);
 }
 
 #mealPlan fieldset label {
     display: block;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.375rem;
     color: var(--c-primary-700);
     font-size: 0.938rem;
 }
 
 #mealPlan fieldset input {
     display: block;
-    margin-bottom: 1rem;
-    padding: 0.35rem;
     width: 100%;
-    background-color: var(--c-neutral-200);
-    border: 1px solid var(--c-primary-700);
-    border-radius: 5px;
+    margin-bottom: 1.25rem;
+    padding: 0.35rem;
     font-size: 1.063rem;
+    border: 1px solid var(--c-primary-700);
+    border-radius: 8px;
 }
 
 #button-wrapper {
-    text-align: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 button {
     padding: 0.5rem 1rem;
-    border-radius: 1.25rem;
-    border: 1px solid var(--c-primary-700);
     background-color: var(--c-primary-600);
+    border: 1px solid var(--c-primary-700);
+    border-radius: 20px;
     color: var(--c-neutral-100);
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
     font-weight: var(--fw-semi-bold);
+    cursor: pointer;
 }
 
 #resetButton {
-    border: 1px solid var(--c-accent-500);
-    background-color: var(--c-accent-400);
     color: var(--c-primary-700);
+    background-color: var(--c-accent-400);
+    border: 1px solid var(--c-accent-500);
 }
 
 #submitButton {
@@ -188,8 +166,8 @@ button {
 
     /* Style rules for the body */
     body {
-        font-size: 1.063rem;
         padding: 2rem;
+        font-size: 1.063rem;
     }
 
     /* Style rules for header area */
@@ -200,15 +178,20 @@ button {
     /* Style rules for main area */
     .wrapper {
         grid-template-columns: 1fr 2fr;
-        padding: 1rem;
-        width: 65.625rem;
+        max-width: 61.25rem;
     }
 
     .desktop.steps {
-        padding: 2.75rem 1.75rem;
+        padding: 1.31rem 1.5rem;
+        text-align: left;
+    }
+
+    .desktop.steps ul {
+        list-style-type: none;
     }
 
     .desktop.steps ul > li {
+        font-family: "Roboto", sans-serif;
         font-size: 1.063rem;
     }
 
@@ -218,10 +201,9 @@ button {
 
     .desktop.steps ul > li span {
         display: inline-block;
-        border: 1px solid var(--c-neutral-100);
+        margin-right: 0.75rem;
         padding: 0.5rem 0.75rem;
-        border-radius: 8px;
-        margin-right: 1rem;
+        border: 1px solid var(--c-neutral-100);border-radius: 5px;
     }
 
     .desktop.steps ul > li.completed {
@@ -230,16 +212,17 @@ button {
 
     .desktop.steps ul > li.completed span {
         background-color: var(--c-accent-600);
-        border-color: var(--c-accent-600);
+        border: none;
         color: var(--c-primary-700);
+    }
+
+    #mealPlan {
+        padding: 1rem 3rem;
     }
 
     #mealPlan fieldset legend {
         text-align: left;
-    }
-
-    #mealPlan fieldset legend h2 {
-        font-size: 2.375rem;
+        font-size: 1.75rem;
     }
 
     #mealPlan fieldset input {
@@ -249,15 +232,6 @@ button {
     button {
         font-size: 1.063rem;
         padding: 0.75rem 1.25rem;
-        transition: background-color 400ms;
-    }
-
-    button:hover {
-        background-color: var(--c-primary-700);
-    }
-
-    #resetButton:hover {
-        background-color: var(--c-accent-500);
     }
 
 }
