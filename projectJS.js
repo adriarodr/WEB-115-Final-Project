@@ -108,89 +108,182 @@ $(document).ready(function () {
 
         // Write onto the new window
         newWin.document.write(`
-            <html>
-                <head>
-                    <link rel="stylesheet" href="css/styles.css">
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                    <link rel="preconnect" href="https://fonts.googleapis.com">
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-                </head>
-                <body>
-                    <h1>Meal Plan for the week</h1>
-                    <p>Welcome ${name}</p>
-                    <p>Email: ${email}</p>
-                    <p>Goal for the week: ${goal}</p>
-                    <table>
-                        <tr>
-                            <td></td>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                            <th>Saturday</th>
-                            <th>Sunday</th>
-                        </tr>
-                        <tr>
-                            <th>Breakfast</th>
-                            <th>${weekMealPlan.monBreakfast}</th>
-                            <th>${weekMealPlan.tuesBreakfast}</th>
-                            <th>${weekMealPlan.wedBreakfast}</th>
-                            <th>${weekMealPlan.thursBreakfast}</th>
-                            <th>${weekMealPlan.friBreakfast}</th>
-                            <th>${weekMealPlan.satBreakfast}</th>
-                            <th>${weekMealPlan.sunBreakfast}</th>
-                        </tr>
-                        <tr>
-                            <th>Snack</th>
-                            <th>${weekMealPlan.monSnack1}</th>
-                            <th>${weekMealPlan.tuesSnack1}</th>
-                            <th>${weekMealPlan.wedSnack1}</th>
-                            <th>${weekMealPlan.thursSnack1}</th>
-                            <th>${weekMealPlan.friSnack1}</th>
-                            <th>${weekMealPlan.satSnack1}</th>
-                            <th>${weekMealPlan.sunSnack1}</th>
-                        </tr>
-                        <tr>
-                            <th>Lunch</th>
-                            <th>${weekMealPlan.monLunch}</th>
-                            <th>${weekMealPlan.tuesLunch}</th>
-                            <th>${weekMealPlan.wedLunch}</th>
-                            <th>${weekMealPlan.thursLunch}</th>
-                            <th>${weekMealPlan.friLunch}</th>
-                            <th>${weekMealPlan.satLunch}</th>
-                            <th>${weekMealPlan.sunLunch}</th>
-                        </tr>
-                        <tr>
-                            <th>Snack</th>
-                            <th>${weekMealPlan.monSnack2}</th>
-                            <th>${weekMealPlan.tuesSnack2}</th>
-                            <th>${weekMealPlan.wedSnack2}</th>
-                            <th>${weekMealPlan.thursSnack2}</th>
-                            <th>${weekMealPlan.friSnack2}</th>
-                            <th>${weekMealPlan.satSnack2}</th>
-                            <th>${weekMealPlan.sunSnack2}</th>
-                        </tr>
-                        <tr>
-                            <th>Dinner</th>
-                            <th>${weekMealPlan.monDinner}</th>
-                            <th>${weekMealPlan.tuesDinner}</th>
-                            <th>${weekMealPlan.wedDinner}</th>
-                            <th>${weekMealPlan.thursDinner}</th>
-                            <th>${weekMealPlan.friDinner}</th>
-                            <th>${weekMealPlan.satDinner}</th>
-                            <th>${weekMealPlan.sunDinner}</th>
-                        </tr>
-                    </table>
-                    <button onclick="print()" class="newWinBtn">Print my meal plan</button>
-                </body>
+                <link rel="stylesheet" href="css/styles.css">
+
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+            </head>
+            <body>
+
+                <main>
+
+                    <section id="mealPlanner">
+
+                        <h1>Meal Plan for the week</h1>
+                        <p>Welcome ${name}</p>
+                        <p>Email: ${email}</p>
+                        <p>Goal for the week: ${goal}</p>
+
+                        <!-- List view for the meal plan for mobile layout -->
+                        <div class="mobile">
+                            <h2>Monday</h2>
+                            <ul>
+                                <li><span class="bold">Breakfast: </span>${weekMealPlan.monBreakfast}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.monSnack1}</li>
+                                <li><span class="bold">Lunch: </span>${weekMealPlan.monLunch}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.monSnack2}</li>
+                                <li><span class="bold">Dinner: </span>${weekMealPlan.monDinner}</li>
+                            </ul>
+
+                            <h2>Tuesday</h2>
+                            <ul>
+                                <li><span class="bold">Breakfast: </span>${weekMealPlan.tuesBreakfast}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.tuesSnack1}</li>
+                                <li><span class="bold">Lunch: </span>${weekMealPlan.tuesLunch}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.tuesSnack2}</li>
+                                <li><span class="bold">Dinner: </span>${weekMealPlan.tuesDinner}</li>
+                            </ul>
+
+                            <h2>Wednesday</h2>
+                            <ul>
+                                <li><span class="bold">Breakfast: </span>${weekMealPlan.wedBreakfast}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.wedSnack1}</li>
+                                <li><span class="bold">Lunch: </span>${weekMealPlan.wedLunch}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.wedSnack2}</li>
+                                <li><span class="bold">Dinner: </span>${weekMealPlan.wedDinner}</li>
+                            </ul>
+
+                            <h2>Thursday</h2>
+                            <ul>
+                                <li><span class="bold">Breakfast: </span>${weekMealPlan.thursBreakfast}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.thursSnack1}</li>
+                                <li><span class="bold">Lunch: </span>${weekMealPlan.thursLunch}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.thursSnack2}</li>
+                                <li><span class="bold">Dinner: </span>${weekMealPlan.thursDinner}</li>
+                            </ul>
+
+                            <h2>Friday</h2>
+                            <ul>
+                                <li><span class="bold">Breakfast: </span>${weekMealPlan.friBreakfast}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.friSnack1}</li>
+                                <li><span class="bold">Lunch: </span>${weekMealPlan.friLunch}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.friSnack2}</li>
+                                <li><span class="bold">Dinner: </span>${weekMealPlan.friDinner}</li>
+                            </ul>
+
+                            <h2>Saturday</h2>
+                            <ul>
+                                <li><span class="bold">Breakfast: </span>${weekMealPlan.satBreakfast}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.satSnack1}</li>
+                                <li><span class="bold">Lunch: </span>${weekMealPlan.satLunch}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.satSnack2}</li>
+                                <li><span class="bold">Dinner: </span>${weekMealPlan.satDinner}</li>
+                            </ul>
+
+                            <h2>Sunday</h2>
+                            <ul>
+                                <li><span class="bold">Breakfast: </span>${weekMealPlan.sunBreakfast}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.sunSnack1}</li>
+                                <li><span class="bold">Lunch: </span>${weekMealPlan.sunLunch}</li>
+                                <li><span class="bold">Snack: </span>${weekMealPlan.sunSnack2}</li>
+                                <li><span class="bold">Dinner: </span>${weekMealPlan.sunDinner}</li>
+                            </ul>
+                        </div>
+
+                        <!-- Table for the meal Planner for desktop layout -->
+                        <table>
+
+                            <tr>
+                                <th></th>
+                                <th>Breakfast</th>
+                                <th>Snack</th>
+                                <th>Lunch</th>
+                                <th>Snack</th>
+                                <th>Dinner</th>
+                            </tr>
+
+                            <tr>
+                                <th>Monday</th>
+                                <td>${weekMealPlan.monBreakfast}</td>
+                                <td>${weekMealPlan.monSnack1}</td>
+                                <td>${weekMealPlan.monLunch}</td>
+                                <td>${weekMealPlan.monSnack2}</td>
+                                <td>${weekMealPlan.monDinner}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Tuesday</th>
+                                <td>${weekMealPlan.tuesBreakfast}</td>
+                                <td>${weekMealPlan.tuesSnack1}</td>
+                                <td>${weekMealPlan.tuesLunch}</td>
+                                <td>${weekMealPlan.tuesSnack2}</td>
+                                <td>${weekMealPlan.tuesDinner}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Wednesday</th>
+                                <td>${weekMealPlan.wedBreakfast}</td>
+                                <td>${weekMealPlan.wedSnack1}</td>
+                                <td>${weekMealPlan.wedLunch}</td>
+                                <td>${weekMealPlan.wedSnack2}</td>
+                                <td>${weekMealPlan.wedDinner}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Thursday</th>
+                                <td>${weekMealPlan.thursBreakfast}</td>
+                                <td>${weekMealPlan.thursSnack1}</td>
+                                <td>${weekMealPlan.thursLunch}</td>
+                                <td>${weekMealPlan.thursSnack2}</td>
+                                <td>${weekMealPlan.thursDinner}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Friday</th>
+                                <td>${weekMealPlan.friBreakfast}</td>
+                                <td>${weekMealPlan.friSnack1}</td>
+                                <td>${weekMealPlan.friLunch}</td>
+                                <td>${weekMealPlan.friSnack2}</td>
+                                <td>${weekMealPlan.friDinner}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Saturday</th>
+                                <td>${weekMealPlan.satBreakfast}</td>
+                                <td>${weekMealPlan.satSnack1}</td>
+                                <td>${weekMealPlan.satLunch}</td>
+                                <td>${weekMealPlan.satSnack2}</td>
+                                <td>${weekMealPlan.satDinner}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Sunday</th>
+                                <td>${weekMealPlan.sunBreakfast}</td>
+                                <td>${weekMealPlan.sunSnack1}</td>
+                                <td>${weekMealPlan.sunLunch}</td>
+                                <td>${weekMealPlan.sunSnack2}</td>
+                                <td>${weekMealPlan.sunDinner}</td>
+                            </tr>
+
+                        </table>
+
+                        <button onclick="print()" class="newWinBtn">Print my meal plan</button>
+
+                    </section>
+
+                </main>
+
+            </body>
             </html>
         `);
     }
-
-    // TODO: Allow user to download Planner
-    // Download Planner
 
     // Next Slide
     function nextSlide() {
