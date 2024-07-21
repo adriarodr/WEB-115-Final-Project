@@ -153,6 +153,47 @@ button {
     display: none;
 }
 
+/* Style rules for new window area */
+#mealPlanner {
+    padding: 1.75rem;
+    border-radius: 10px;
+    background-color: var(--c-neutral-100);
+}
+
+#mealPlanner div {
+    margin-bottom: 1.5rem;
+}
+
+#mealPlanner h2 {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    text-align: center;
+    color: var(--c-neutral-100);
+    background-color: var(--c-primary-600);
+    border-radius: 10px;
+}
+
+#mealPlanner h2:not(#mealPlanner h2:first-child) {
+    margin-top: 1.5rem;
+}
+
+#mealPlanner ul {
+    list-style-type: none;
+}
+
+.bold {
+    font-weight: var(--fw-bold);
+}
+
+table {
+    display: none;
+}
+
+#mealPlanner button {
+    display: block;
+    margin: 0 auto;
+}
+
 /* Style rules for Desktop Viewport */
 @media (min-width: 1280px) {
     /* Hides mobile view and display desktop view */
@@ -234,4 +275,23 @@ button {
         padding: 0.75rem 1.25rem;
     }
 
+    /* Style rules for new window area */
+    table {
+        display: table;
+        margin-inline: auto;
+        margin-bottom: 1.75rem;
+        border-collapse: collapse;
+        border: 1px solid var(--c-primary-700);
+        text-align: left;
+    }
+
+    th, td {
+        border: 1px solid var(--c-primary-700);
+        padding: 1rem;
+    }
+
+    th {
+        color: var(--c-neutral-100);
+        background-color: var(--c-primary-600);
+    }
 }
