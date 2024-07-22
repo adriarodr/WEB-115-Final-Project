@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     // Validate Email
     function validateEmail(email) {
-        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        const emailRegex = /^\S+@\S+\.\S+$/;
         const isEmailValid = emailRegex.test(email.value);
 
         if (!isEmailValid) {
@@ -31,7 +31,7 @@ $(document).ready(function () {
     // Reset the meal plan form
     function resetMealPlan(e) {
         // Display a confirmation window and store the response
-        const response = confirm("This will clear and reset the entire form. Are you sure you want to do this?");
+        const response = confirm("This action will clear all your entries and reset the form. Are you sure you want to proceed?");
 
         // If response is true, then reset the form
         if (response) {
@@ -126,13 +126,15 @@ $(document).ready(function () {
 
                     <section id="mealPlanner">
 
-                        <h1>Meal Plan for the week</h1>
-                        <p>Welcome ${name}</p>
-                        <p>Email: ${email}</p>
-                        <p>Goal for the week: ${goal}</p>
+                        <div id="personInfo">
+                            <h1>Meal Plan for the week</h1>
+                            <p>Welcome ${name}</p>
+                            <p>Email: ${email}</p>
+                            <p>Goal for the week: ${goal}</p>
+                        </div>
 
                         <!-- List view for the meal plan for mobile layout -->
-                        <div class="mobile">
+                        <div class="mobile" id="planner">
                             <h2>Monday</h2>
                             <ul>
                                 <li><span class="bold">Breakfast: </span>${weekMealPlan.monBreakfast}</li>
@@ -299,8 +301,6 @@ $(document).ready(function () {
             // Update the steps for mobile steps progress
             $("#currentSteps").text(currentStep + 1);
 
-            $("#mealPlan fieldset.active input")[0].focus();
-
             // If the current step is 7 (last step), hide the next button and show the submit button
             if (currentStep === 7) {
                 $("#nextSlide").hide();
@@ -324,8 +324,6 @@ $(document).ready(function () {
 
             // Update the steps for mobile steps progress
             $("#currentSteps").text(currentStep + 1);
-
-            $("#mealPlan fieldset.active input")[0].focus();
 
             // If the current step falls below 7, show the next button and hide the submit button
             if (currentStep < 7) {
