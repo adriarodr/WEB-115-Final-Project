@@ -108,8 +108,8 @@ $(document).ready(function () {
         // Create a welcome message depending if the user entered a name or not
         const welcomeMessage = "Welcome" + ((name === "") ? "!" : `, ${name}!`);
 
-        // New window content
-        const newWinContent = `
+        // Write new window content onto the new window
+        newWin.document.write(`
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -289,10 +289,7 @@ $(document).ready(function () {
 
             </body>
             </html>
-        `;
-
-        // Write new window content onto the new window
-        newWin.document.write(newWinContent);
+        `);
 
         // Adds a method/function to allows users to download the planner as a text file
         newWin.downloadMealPlan = function() {
