@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    testForm();
+
     // Stores the current step
     let currentStep = 0;
 
@@ -102,11 +104,11 @@ $(document).ready(function () {
         const email = document.getElementById("email").value;
         const goal = document.getElementById("goalWeek").value;
 
-        // Create a new window
-        const newWin = window.open("", "Your Meal Plan for the Week");
-
         // Create a welcome message depending if the user entered a name or not
         const welcomeMessage = "Welcome" + ((name === "") ? "!" : `, ${name}!`);
+
+        // Create a new window
+        const newWin = window.open("", "Your Meal Plan for the Week");
 
         // Write new window content onto the new window
         newWin.document.write(`
@@ -294,13 +296,13 @@ $(document).ready(function () {
         // Adds a method/function to allows users to download the planner as a text file
         newWin.downloadMealPlan = function() {
             // Stores the text from within the element with ID of personInfo
-            const personInfoContent = $("#personInfo").text();
+            const personInfoContent = newWin.document.getElementById("personInfo").innerText;
 
             // Stores the text from the mobile view of the mealPlanner
-            const mealPlanContent = $("#mealPlanner .mobile").text();
+            const mealPlanContent = newWin.document.querySelector(".mobile").innerText;
 
             // Combine the personInfo text and Mobile mealPlan
-            const mealPlanner = personInfoContent + mealPlanContent;
+            const mealPlanner = personInfoContent + "\n" + mealPlanContent;
 
             // Create a Blob object with the combined text with text/plan type
             const mealPlanBlob = new Blob([mealPlanner], {type: "text/plain"});
@@ -363,52 +365,52 @@ $(document).ready(function () {
         }
     }
 
-    // // A quick function to populate the form for testings
-    // function testForm() {
-    //     document.getElementById("name").value = "Full Name";
-    //     document.getElementById("email").value = "example@email.com";
-    //     document.getElementById("goalWeek").value = "To get this project done";
+    // A quick function to populate the form for testings
+    function testForm() {
+        document.getElementById("name").value = "Full Name";
+        document.getElementById("email").value = "example@email.com";
+        document.getElementById("goalWeek").value = "To get this project done";
 
-    //     document.getElementById("monBreakfast").value = "Oatmeal with berries";
-    //     document.getElementById("monSnack1").value = "Apple slices";
-    //     document.getElementById("monLunch").value = "Chicken salad";
-    //     document.getElementById("monSnack2").value = "Yogurt";
-    //     document.getElementById("monDinner").value = "Grilled salmon with vegetables";
+        document.getElementById("monBreakfast").value = "Oatmeal with berries";
+        document.getElementById("monSnack1").value = "Apple slices";
+        document.getElementById("monLunch").value = "Chicken salad";
+        document.getElementById("monSnack2").value = "Yogurt";
+        document.getElementById("monDinner").value = "Grilled salmon with vegetables";
 
-    //     document.getElementById("tuesBreakfast").value = "Smoothie bowl";
-    //     document.getElementById("tuesSnack1").value = "Almonds";
-    //     document.getElementById("tuesLunch").value = "Turkey wrap";
-    //     document.getElementById("tuesSnack2").value = "Carrot sticks";
-    //     document.getElementById("tuesDinner").value = "Stir-fried tofu with rice";
+        document.getElementById("tuesBreakfast").value = "Smoothie bowl";
+        document.getElementById("tuesSnack1").value = "Almonds";
+        document.getElementById("tuesLunch").value = "Turkey wrap";
+        document.getElementById("tuesSnack2").value = "Carrot sticks";
+        document.getElementById("tuesDinner").value = "Stir-fried tofu with rice";
 
-    //     document.getElementById("wedBreakfast").value = "Greek yogurt with granola";
-    //     document.getElementById("wedSnack1").value = "Banana";
-    //     document.getElementById("wedLunch").value = "Quinoa salad";
-    //     document.getElementById("wedSnack2").value = "Cottage cheese";
-    //     document.getElementById("wedDinner").value = "Baked chicken with sweet potatoes";
+        document.getElementById("wedBreakfast").value = "Greek yogurt with granola";
+        document.getElementById("wedSnack1").value = "Banana";
+        document.getElementById("wedLunch").value = "Quinoa salad";
+        document.getElementById("wedSnack2").value = "Cottage cheese";
+        document.getElementById("wedDinner").value = "Baked chicken with sweet potatoes";
 
-    //     document.getElementById("thursBreakfast").value = "Avocado toast";
-    //     document.getElementById("thursSnack1").value = "Mixed nuts";
-    //     document.getElementById("thursLunch").value = "Veggie wrap";
-    //     document.getElementById("thursSnack2").value = "Hummus with cucumber";
-    //     document.getElementById("thursDinner").value = "Spaghetti with marinara sauce";
+        document.getElementById("thursBreakfast").value = "Avocado toast";
+        document.getElementById("thursSnack1").value = "Mixed nuts";
+        document.getElementById("thursLunch").value = "Veggie wrap";
+        document.getElementById("thursSnack2").value = "Hummus with cucumber";
+        document.getElementById("thursDinner").value = "Spaghetti with marinara sauce";
 
-    //     document.getElementById("friBreakfast").value = "Scrambled eggs with spinach";
-    //     document.getElementById("friSnack1").value = "Orange slices";
-    //     document.getElementById("friLunch").value = "Tuna salad";
-    //     document.getElementById("friSnack2").value = "Cheese sticks";
-    //     document.getElementById("friDinner").value = "Beef stir-fry with broccoli";
+        document.getElementById("friBreakfast").value = "Scrambled eggs with spinach";
+        document.getElementById("friSnack1").value = "Orange slices";
+        document.getElementById("friLunch").value = "Tuna salad";
+        document.getElementById("friSnack2").value = "Cheese sticks";
+        document.getElementById("friDinner").value = "Beef stir-fry with broccoli";
 
-    //     document.getElementById("satBreakfast").value = "Pancakes with maple syrup";
-    //     document.getElementById("satSnack1").value = "Berries";
-    //     document.getElementById("satLunch").value = "Chicken Caesar salad";
-    //     document.getElementById("satSnack2").value = "Apple slices";
-    //     document.getElementById("satDinner").value = "Shrimp tacos";
+        document.getElementById("satBreakfast").value = "Pancakes with maple syrup";
+        document.getElementById("satSnack1").value = "Berries";
+        document.getElementById("satLunch").value = "Chicken Caesar salad";
+        document.getElementById("satSnack2").value = "Apple slices";
+        document.getElementById("satDinner").value = "Shrimp tacos";
 
-    //     document.getElementById("sunBreakfast").value = "Smoothie";
-    //     document.getElementById("sunSnack1").value = "Trail mix";
-    //     document.getElementById("sunLunch").value = "Lentil soup";
-    //     document.getElementById("sunSnack2").value = "Celery sticks with peanut butter";
-    //     document.getElementById("sunDinner").value = "Roast beef with mashed potatoes";
-    // }
+        document.getElementById("sunBreakfast").value = "Smoothie";
+        document.getElementById("sunSnack1").value = "Trail mix";
+        document.getElementById("sunLunch").value = "Lentil soup";
+        document.getElementById("sunSnack2").value = "Celery sticks with peanut butter";
+        document.getElementById("sunDinner").value = "Roast beef with mashed potatoes";
+    }
 });
