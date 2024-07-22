@@ -58,11 +58,13 @@
                 <fieldset id="personal-info" class="active">
                     <legend><h2>Personal Information</h2></legend>
 
+                    <p>Please provide your name, email, and your goal for the week.</p>
+
                     <label for="name">Full Name</label>
                     <input type="text" name="name" id="name" placeholder="John Smith">
 
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" required placeholder="example@email.com">
+                    <input type="text" name="email" id="email" placeholder="example@email.com" required>
 
                     <label for="goalWeek">Enter your goal for the week</label>
                     <input type="text" name="goalWeek" id="goalWeek">
@@ -71,6 +73,8 @@
                 <!-- Meal Plan: Monday fieldset -->
                 <fieldset id="monday">
                     <legend><h2>Meal Plan: Monday</h2></legend>
+
+                    <p>Please enter your meals for breakfast, snack, lunch, snack, and dinner for Monday.</p>
 
                     <label for="monBreakfast">Breakfast</label>
                     <input type="text" name="monBreakfast" id="monBreakfast">
@@ -92,6 +96,8 @@
                 <fieldset id="tuesday">
                     <legend><h2>Meal Plan: Tuesday</h2></legend>
 
+                    <p>Please enter your meals for breakfast, snack, lunch, snack, and dinner for Tuesday.</p>
+
                     <label for="tuesBreakfast">Breakfast</label>
                     <input type="text" name="tuesBreakfast" id="tuesBreakfast">
 
@@ -111,6 +117,8 @@
                 <!-- Meal Plan: Wednesday fieldset -->
                 <fieldset id="wednesday">
                     <legend><h2>Meal Plan: Wednesday</h2></legend>
+
+                    <p>Please enter your meals for breakfast, snack, lunch, snack, and dinner for Wednesday.</p>
 
                     <label for="wedBreakfast">Breakfast</label>
                     <input type="text" name="wedBreakfast" id="wedBreakfast">
@@ -132,6 +140,8 @@
                 <fieldset id="thursday">
                     <legend><h2>Meal Plan: Thursday</h2></legend>
 
+                    <p>Please enter your meals for breakfast, snack, lunch, snack, and dinner for Thursday.</p>
+
                     <label for="thursBreakfast">Breakfast</label>
                     <input type="text" name="thursBreakfast" id="thursBreakfast">
 
@@ -151,6 +161,8 @@
                 <!-- Meal Plan: Friday fieldset -->
                 <fieldset id="friday">
                     <legend><h2>Meal Plan: Friday</h2></legend>
+
+                    <p>Please enter your meals for breakfast, snack, lunch, snack, and dinner for Friday.</p>
 
                     <label for="friBreakfast">Breakfast</label>
                     <input type="text" name="friBreakfast" id="friBreakfast">
@@ -172,6 +184,8 @@
                 <fieldset id="saturday">
                     <legend><h2>Meal Plan: Saturday</h2></legend>
 
+                    <p>Please enter your meals for breakfast, snack, lunch, snack, and dinner for Saturday.</p>
+
                     <label for="satBreakfast">Breakfast</label>
                     <input type="text" name="satBreakfast" id="satBreakfast">
 
@@ -192,6 +206,8 @@
                 <fieldset id="sunday">
                     <legend><h2>Meal Plan: Sunday</h2></legend>
 
+                    <p>Please enter your meals for breakfast, snack, lunch, snack, and dinner for Sunday.</p>
+
                     <label for="sunBreakfast">Breakfast</label>
                     <input type="text" name="sunBreakfast" id="sunBreakfast">
 
@@ -211,9 +227,13 @@
                 <!-- Wrapper for the form buttons -->
                 <div id="button-wrapper">
                     <button type="reset" id="resetButton">Reset</button>
-                    <button type="button" id="previousSlide" >Previous</button>
-                    <button type="button" id="nextSlide">Next</button>
-                    <button type="submit" id="submitButton">Submit</button>
+
+                    <!-- Wrapper to have the previous button and next/submit button next to it -->
+                    <div>
+                        <button type="button" id="previousSlide">Previous</button>
+                        <button type="button" id="nextSlide">Next Step</button>
+                        <button type="submit" id="submitButton">Create my Planner</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -221,7 +241,7 @@
     </main>
 
     <footer>
-
+        <p>&copy; Copyright 2024. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
