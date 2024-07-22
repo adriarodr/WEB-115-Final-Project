@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    const email = document.getElementById("email");
-
-    // Stores the current slide
+    // Stores the current step
     let currentStep = 0;
 
     // Add a click handler to next button
@@ -16,19 +14,20 @@ $(document).ready(function () {
     // Add a click handler to submit button
     $("#submitButton").click(generatePlanner);
 
-    // Validate Email
-    function validateEmail(email) {
+    // Validates the email
+    function validateEmail() {
         const emailRegex = /^\S+@\S+\.\S+$/;
-        const isEmailValid = emailRegex.test(email.value);
+        const email = document.getElementById("email").value;
+        const isEmailValid = emailRegex.test(email);
 
         if (!isEmailValid) {
-            alert("Please enter a valid email");
+            alert("Please enter a valid email address");
         }
 
         return isEmailValid;
     }
 
-    // Reset the meal plan form
+    // Reset the meal planner form
     function resetMealPlan(e) {
         // Display a confirmation window and store the response
         const response = confirm("This action will clear all your entries and reset the form. Are you sure you want to proceed?");
@@ -41,7 +40,7 @@ $(document).ready(function () {
             // Add active class to the first step/fieldset and show it
             $("#mealPlan fieldset").first().addClass("active").hide().show(400);
 
-            // Reset the currentStep
+            // Reset the currentStep counter
             currentStep = 0;
 
             // Iterates through all the list items with completed class and removes that class
@@ -59,7 +58,7 @@ $(document).ready(function () {
 
     // Generates the meal planner for the week
     function generatePlanner() {
-        // Obtain all the values for meal plan and save it into an object
+        // Obtain all the values for meal plan and save it into an weekMealPlan object
         const weekMealPlan = {
             monBreakfast: document.getElementById("monBreakfast").value,
             monSnack1: document.getElementById("monSnack1").value,
@@ -104,10 +103,13 @@ $(document).ready(function () {
         const goal = document.getElementById("goalWeek").value;
 
         // Create a new window
-        const newWin = window.open("", "Week Meal Plan");
+        const newWin = window.open("", "Your Meal Plan for the Week");
 
-        // Write onto the new window
-        newWin.document.write(`
+        // Create a welcome message depending if the user entered a name or not
+        const welcomeMessage = "Welcome" + ((name === "") ? "!" : `, ${name}!`);
+
+        // New window content
+        const newWinContent = `
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -127,10 +129,10 @@ $(document).ready(function () {
                     <section id="mealPlanner">
 
                         <div id="personInfo">
-                            <h1>Meal Plan for the week</h1>
-                            <p>Welcome ${name}</p>
-                            <p>Email: ${email}</p>
-                            <p>Goal for the week: ${goal}</p>
+                            <h1>Your Meal Plan for the Week</h1>
+                            <p>${welcomeMessage}</p>
+                            <p>Your Email: ${email}</p>
+                            <p>Your Goal for the Week: ${goal}</p>
                         </div>
 
                         <!-- List view for the meal plan for mobile layout -->
@@ -276,7 +278,10 @@ $(document).ready(function () {
 
                         </table>
 
-                        <button onclick="print()" class="newWinBtn">Print my meal plan</button>
+                        <div class="button-wrapper">
+                            <button onclick="print()" class="newWinBtn">Print My Meal Plan</button>
+                            <button onclick="downloadMealPlan()" class="newWinBtn">Download My Meal Plan</button>
+                        </div>
 
                     </section>
 
@@ -284,21 +289,51 @@ $(document).ready(function () {
 
             </body>
             </html>
-        `);
+        `;
+
+        // Write new window content onto the new window
+        newWin.document.write(newWinContent);
+
+        // Adds a method/function to allows users to download the planner as a text file
+        newWin.downloadMealPlan = function() {
+            // Stores the text from within the element with ID of personInfo
+            const personInfoContent = $("#personInfo").text();
+
+            // Stores the text from the mobile view of the mealPlanner
+            const mealPlanContent = $("#mealPlanner .mobile").text();
+
+            // Combine the personInfo text and Mobile mealPlan
+            const mealPlanner = personInfoContent + mealPlanContent;
+
+            // Create a Blob object with the combined text with text/plan type
+            const mealPlanBlob = new Blob([mealPlanner], {type: "text/plain"});
+
+            // Create an anchor element within the new window
+            const mealPlanLink = newWin.document.createElement("a");
+
+            // Set the href the URL of the mealPlanBlob
+            mealPlanLink.href = URL.createObjectURL(mealPlanBlob);
+
+            // Set the download attribute to make the file downloadable and sets the file name
+            mealPlanLink.download = "meal_planner.txt";
+
+            // Triggers click event on the link
+            mealPlanLink.click();
+        };
     }
 
-    // Next Slide
+    // Function for moving to the next step/fieldset
     function nextSlide() {
-        if (validateEmail(email) && currentStep < 7) {
+        if (validateEmail() && currentStep < 7) {
             // Removes the active class from the currentStep and adds it to the next sibling
             $($("#mealPlan fieldset")[currentStep]).removeClass("active").next("fieldset").addClass("active").hide().show(400);
 
-            // Add completed class to the current step list item for desktop steps progress
+            // Add completed class to the current step list item for desktop users
             $($(".desktop.steps ul > li")[currentStep]).addClass("completed");
 
             currentStep++;
 
-            // Update the steps for mobile steps progress
+            // Update the steps for mobile users
             $("#currentSteps").text(currentStep + 1);
 
             // If the current step is 7 (last step), hide the next button and show the submit button
@@ -309,20 +344,18 @@ $(document).ready(function () {
         }
     }
 
-    // Previous Slide
+    // Function for moving to the previous step/fieldset
     function PreviousSlide() {
         if (currentStep > 0) {
-            const currentSlide = $("#mealPlan fieldset")[currentStep];
-
-            // Removes the active class from the currentStep and adds it to the previous sibling
-            $(currentSlide).removeClass("active").prev("fieldset").addClass("active").hide().show(400);
+            // Removes the active class from the current fieldset and adds it to the previous sibling
+            $($("#mealPlan fieldset")[currentStep]).removeClass("active").prev("fieldset").addClass("active").hide().show(400);
 
             currentStep--;
 
-            // Remove completed class to the current step list item for desktop steps progress
+            // Remove completed class for the current step list item for desktop users
             $($(".desktop.steps ul > li")[currentStep]).removeClass("completed");
 
-            // Update the steps for mobile steps progress
+            // Update the steps for mobile user
             $("#currentSteps").text(currentStep + 1);
 
             // If the current step falls below 7, show the next button and hide the submit button

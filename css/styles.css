@@ -149,7 +149,7 @@ header img {
     border-radius: 8px;
 }
 
-#button-wrapper {
+.button-wrapper {
     display: flex;
     justify-content: space-between;
 }
@@ -236,9 +236,10 @@ table {
     display: none;
 }
 
-#mealPlanner button {
-    display: block;
-    margin: 0 auto;
+#mealPlanner .button-wrapper {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.75rem;
 }
 
 /* Style rules for Desktop Viewport */
